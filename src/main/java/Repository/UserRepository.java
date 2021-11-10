@@ -219,4 +219,127 @@ public class UserRepository {
 
 
     }
+
+    public static newUser getUserByFirstname(newUser user12) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement stmt = null;
+        newUser user1=new newUser();
+        // STEP 1: Register JDBC driver
+        Class.forName(JDBC_DRIVER);
+        System.out.println("repository is ");
+
+        // STEP 2: Open a connection
+        System.out.println("Connecting to database...");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        // STEP 3: Execute a query
+        System.out.println("Connected database successfully...");
+        stmt = conn.createStatement();
+        String sql = "SELECT * FROM Registration where first=?";
+
+        PreparedStatement PreparedStatement1 = conn.prepareStatement(sql);
+        PreparedStatement1.setString(1, user12.getFirst());
+        ResultSet rs = PreparedStatement1.executeQuery();
+
+        // STEP 4: Extract data from result set
+        while (rs.next()) {
+            // Retrieve by column name
+
+            user1.setId(rs.getInt("ID"));
+            user1.setAge(rs.getInt("AGE"));
+            user1.setFirst(rs.getString("FIRST"));
+            user1.setLast(rs.getString("LAST"));
+            // userbyid.add(user1);
+        }
+        // STEP 5: Clean-up environment
+        rs.close();
+        PreparedStatement1.close();
+
+
+        return user1;
+
+
+    }
+
+    public static newUser getUserByAge(newUser user12) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement stmt = null;
+        newUser user1=new newUser();
+        // STEP 1: Register JDBC driver
+        Class.forName(JDBC_DRIVER);
+        System.out.println("repository is ");
+
+        // STEP 2: Open a connection
+        System.out.println("Connecting to database...");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        // STEP 3: Execute a query
+        System.out.println("Connected database successfully...");
+        stmt = conn.createStatement();
+        String sql = "SELECT * FROM Registration where AGE=?";
+
+        PreparedStatement PreparedStatement1 = conn.prepareStatement(sql);
+        PreparedStatement1.setInt(1, user12.getAge());
+        ResultSet rs = PreparedStatement1.executeQuery();
+
+        // STEP 4: Extract data from result set
+        while (rs.next()) {
+            // Retrieve by column name
+
+            user1.setId(rs.getInt("ID"));
+            user1.setAge(rs.getInt("AGE"));
+            user1.setFirst(rs.getString("FIRST"));
+            user1.setLast(rs.getString("LAST"));
+            // userbyid.add(user1);
+        }
+        // STEP 5: Clean-up environment
+        rs.close();
+        PreparedStatement1.close();
+
+
+        return user1;
+
+
+    }
+
+    public static newUser getUserByLast(newUser user12) throws ClassNotFoundException, SQLException {
+        Connection conn = null;
+        Statement stmt = null;
+        newUser user1=new newUser();
+        // STEP 1: Register JDBC driver
+        Class.forName(JDBC_DRIVER);
+        System.out.println("repository is ");
+
+        // STEP 2: Open a connection
+        System.out.println("Connecting to database...");
+        conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+        // STEP 3: Execute a query
+        System.out.println("Connected database successfully...");
+        stmt = conn.createStatement();
+        String sql = "SELECT * FROM Registration where LAST=?";
+
+        PreparedStatement PreparedStatement1 = conn.prepareStatement(sql);
+        PreparedStatement1.setString(1, user12.getLast());
+        ResultSet rs = PreparedStatement1.executeQuery();
+
+        // STEP 4: Extract data from result set
+        while (rs.next()) {
+            // Retrieve by column name
+
+            user1.setId(rs.getInt("ID"));
+            user1.setAge(rs.getInt("AGE"));
+            user1.setFirst(rs.getString("FIRST"));
+            user1.setLast(rs.getString("LAST"));
+            // userbyid.add(user1);
+        }
+        // STEP 5: Clean-up environment
+        rs.close();
+        PreparedStatement1.close();
+
+
+        return user1;
+
+
+    }
 }

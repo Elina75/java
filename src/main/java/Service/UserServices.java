@@ -41,4 +41,15 @@ public class UserServices {
         return UserRepository.getUserById(user);
     }
 
+    public newUser getUserByFirstname(newUser user) throws SQLException, ClassNotFoundException {
+        return UserRepository.getUserByFirstname(user);
+    }
+    public newUser getUserByLast(newUser user) throws SQLException, ClassNotFoundException {
+        return UserRepository.getUserByLast(user);
+    }
+
+    public newUser getUserByAge(newUser user) throws SQLException, ClassNotFoundException {
+        return UserRepository.getUserByAge(user);
+    }
+
 }

@@ -9,7 +9,7 @@ import javax.ejb.EJB;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import Repository.Student;
+//import Repository.Student;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -27,8 +27,8 @@ public class HelloResource {
 
     @GET
     @Produces("application/json")
-    public List<Student> hello() {
-        return Student.getStudents();
+    public String hello() {
+        return "Welcome!";
     }
 
     @GET
@@ -75,6 +75,26 @@ public class HelloResource {
     @Produces(MediaType.APPLICATION_JSON)
     public newUser getUserById(newUser user)throws SQLException, ClassNotFoundException {
        return userServices.getUserById(user);
+    }
+
+    @GET
+    @Path("/getUserByFirstname")
+    @Produces(MediaType.APPLICATION_JSON)
+    public newUser getUserByFirstname(newUser user)throws SQLException, ClassNotFoundException {
+        return userServices.getUserByFirstname(user);
+    }
+
+    @GET
+    @Path("/getUserByAge")
+    @Produces(MediaType.APPLICATION_JSON)
+    public newUser getUserByAge(newUser user)throws SQLException, ClassNotFoundException {
+        return userServices.getUserByAge(user);
+    }
+    @GET
+    @Path("/getUserByLast")
+    @Produces(MediaType.APPLICATION_JSON)
+    public newUser getUserByLast(newUser user)throws SQLException, ClassNotFoundException {
+        return userServices.getUserByLast(user);
     }
 
     @GET
